@@ -1,18 +1,20 @@
-(function(){
-    var app = angular.module('myApp', []);
-    app.controller('FormController', ['$scope', function($scope){
-        $scope.step = 1;
+var app = angular.module('myApp', []);
+    var FormController = function($scope){
+        var _this = this;
 
-        $scope.nextStep = function() {
-            $scope.step++;
+        this.step = 1;
+
+        this.nextStep = function(){
+            _this.step++;
         }
 
-        $scope.prevStep = function() {
-            $scope.step--;
+        this.prevStep = function(){
+            _this.step--;
         }
 
-        $scope.submitForm = function() {
-            // submit code goes here
+        this.submitForm = function(){
+
         }
-    }]);
-})();
+    }
+FormController.$inject = ['$scope'];    
+app.controller('FormController', FormController);
