@@ -38,3 +38,46 @@
         <script src="public/js/app.js"></script>
     </body>
 </html>
+
+<--! Another update to avoid scope soup -->
+
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <title>Angular split form</title>
+        <link rel="stylesheet" href="public/vendor/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <form class="form-vertical" name="myForm" ng-controller="FormController as formController" novalidate>
+            <fieldset ng-show="formController.step == 1">
+                <legend>Step one</legend>
+                <div class="form-group">
+                   <label for="name">Your name</label>
+                   <input class="form-control" type="text" id="name" name="name" ng-model="name" />
+                </div>
+                <button class="btn btn-primary" ng-click="formController.nextStep()">Next step</button>
+            </fieldset>
+            <fieldset ng-show="formController.step == 2">
+                <legend>Step two</legend>
+                <div class="form-group">
+                    <label for="email">Your email</label>
+                    <input class="form-control" type="email" id="email" name="email" ng-model="email" />
+                </div>
+                <button class="btn btn-default" ng-click="formController.prevStep()">Previous step</button>
+                <button class="btn btn-primary" ng-click="formController.nextStep()">Next step</button>
+            </fieldset>
+            <fieldset ng-show="formController.step == 3">
+                <legend>Step three</legend>
+                <div class="form-group">
+                    <label for="msg">Short message</label>
+                    <input class="form-control" type="text" id="msg" name="msg" ng-model="msg" />
+                </div>
+                <button class="btn btn-default" ng-click="formController.prevStep()">Previous step</button>
+                <button class="btn btn-primary" ng-click="formController.submitForm()">Submit</button>
+            </fieldset>
+        </form>
+        <script src="public/vendor/angular/angular.min.js"></script>
+        <script src="public/js/app.js"></script>
+    </body>
+</html>
+
